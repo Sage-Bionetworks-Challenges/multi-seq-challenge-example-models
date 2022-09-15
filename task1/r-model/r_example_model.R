@@ -22,7 +22,7 @@ output_filenames <- paste0(basenames, "_imputed.csv")
 for (i in seq_along(input_filenames)) {
   # read input data
   input_path <- file.path(input_dir, input_filenames[i])
-  input_data <- data.table::fread(input_path, data.table = TRUE) %>% tibble::column_to_rownames("V1")
+  input_data <- data.table::fread(input_path, data.table = FALSE) %>% tibble::column_to_rownames("V1")
 
   # apply your model for imputation
   pred_data <- input_data * runif(1, 0, 1)
