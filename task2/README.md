@@ -20,7 +20,7 @@
 
    ```bash
    docker run \
-       -v $(pwd)/<folder-of-training-data>/:/data:ro \
+       -v $(pwd)/<folder-of-training-data>/:/input:ro \
        -v $(pwd)/output:/output:rw \
        docker.synapse.org/syn123/example-model-task2:v1
    ```

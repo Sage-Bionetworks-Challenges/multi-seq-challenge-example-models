@@ -21,7 +21,7 @@
 
    ```bash
    docker run \
-       -v $PWD/scrna_toy_data/:/data:ro \
+       -v $PWD/scrna_toy_data/:/input:ro \
        -v $PWD/output:/output:rw \
        docker.synapse.org/syn123/example-model-task1:v1
    ```
