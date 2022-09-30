@@ -1,6 +1,12 @@
 ## Build your model
 
-1. Build the Docker image `docker.synapse.org/<synapse-project-id>/<model-name>:<image-tag>`, like the following command:
+1. Go to the one of example models folder:
+
+   - [r-simple](r-example/): [R] model by multiplying random numbers
+   - [r-magic](r-magic/): [R] model using `Rmagic` package from [MAGIC](https://github.com/KrishnaswamyLab/MAGIC)
+   - [py-deepimpute](r-deepimpute/): [Python] model using [deepimpute](https://github.com/lanagarmire/deepimpute)
+
+2. Build the Docker image `docker.synapse.org/<synapse-project-id>/<model-name>:<image-tag>`, like the following command:
 
    ```bash
    # in the 'task1' folder

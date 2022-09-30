@@ -1,8 +1,11 @@
 #!/usr/bin/env Rscript
-suppressMessages(library("data.table"))
-suppressMessages(library("tibble"))
-suppressMessages(library("parallel"))
-suppressMessages(library("parallelly"))
+
+suppressPackageStartupMessages({
+  library("data.table")
+  library("tibble")
+  library("parallel")
+  library("parallelly")
+})
 
 # Read arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -18,7 +21,7 @@ message("I am using ", ncores, " cores ...")
 source("/imputation_model.R")
 
 # Read the basename of all downsampled data
-basenames <- read.table(file.path(args[1], "scrna_input_basenames.txt"), header = FALSE)[, 1]
+basenames <- read.table(file.path(input_dir, "scrna_input_basenames.txt"), header = FALSE)[, 1]
 
 # Add ".csv" extension to create input filenames 
 input_filenames <- paste0(basenames, ".csv")

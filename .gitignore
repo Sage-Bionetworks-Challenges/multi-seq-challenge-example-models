@@ -1,3 +1,5 @@
 *.csv
 *.bam
 *.narrowPeak
+**/__pycache__
+.DS_Store
