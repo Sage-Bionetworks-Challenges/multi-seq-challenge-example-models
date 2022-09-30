@@ -9,7 +9,7 @@
 2. Build the Docker image `docker.synapse.org/<synapse-project-id>/<model-name>:<image-tag>`, like the following command:
 
    ```bash
-   # in the 'task1' folder
+   # in an example model folder
    docker build -t docker.synapse.org/syn123/example-model-task1:v1 .
    ```
 
