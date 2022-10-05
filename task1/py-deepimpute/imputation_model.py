@@ -1,9 +1,10 @@
-from deepimpute.multinet import MultiNet
 import pandas as pd
 
 
 def imputation_model(model_inputs, ncores=4):
     """here is just an example of deepimpute, please change to use your own model"""
+    # need to import in each process
+    from deepimpute.multinet import MultiNet
 
     input_path, output_path, ncores = model_inputs
 

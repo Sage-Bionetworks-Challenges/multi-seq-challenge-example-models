@@ -4,8 +4,6 @@ suppressPackageStartupMessages({
   library("data.table")
   library("tibble")
   library("Rmagic")
-  library("parallel")
-  library("parallelly")
 })
 
 # Read arguments
@@ -33,7 +31,7 @@ output_filenames <- paste0(basenames, "_imputed.csv")
 set.seed(1234)
 chunks <- split(
   sample(seq_along(basenames)),
-  cut(seq_along(basenames), 10, labels = FALSE)
+  cut(seq_along(basenames), 3, labels = FALSE)
 )
 
 for (c in chunks) {

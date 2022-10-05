@@ -2,7 +2,7 @@
 FROM r-base:4.2.0
 
 # install required R libraries
-RUN R -e "install.packages(c('data.table', 'tibble', 'parallelly', 'Rmagic'), repos = 'http://cran.us.r-project.org')"
+RUN R -e "install.packages(c('data.table', 'tibble', 'Rmagic'), repos = 'http://cran.us.r-project.org')"
 
 # install python and install pigz for faster tar
 RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-dev python3-pip pigz

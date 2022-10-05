@@ -13,8 +13,12 @@ input_dir <- args[1]
 output_dir <- args[2]
 
 # Set cores if needed
+# Use parallel::detectCores() will not respect cgroups, cpus in the docker
+# You could use parallelly::availableCores() instead,
+# but suggest to manually set the number of cores
 # Do not use more than 20 cores - it might slow down the performance
-ncores <- parallelly::availableCores()
+# ncores <- parallelly::availableCores()
+ncores <- 20
 message("I am using ", ncores, " cores ...")
 
 # Load your model
@@ -23,7 +27,7 @@ source("/imputation_model.R")
 # Read the basename of all downsampled data
 basenames <- read.table(file.path(input_dir, "scrna_input_basenames.txt"), header = FALSE)[, 1]
 
-# Add ".csv" extension to create input filenames 
+# Add ".csv" extension to create input filenames
 input_filenames <- paste0(basenames, ".csv")
 # Add "_imputed" to create prediction/output filenames
 output_filenames <- paste0(basenames, "_imputed.csv")
@@ -37,7 +41,7 @@ parallel::mclapply(seq_along(input_filenames), function(i) {
   input_path <- file.path(input_dir, input_filenames[i])
   input_data <- data.table::fread(input_path, data.table = TRUE)
   input_data <- tibble::column_to_rownames(input_data, "V1")
-  
+
   # apply your model for imputation
   pred_data <- imputation_model(input_data)
 
