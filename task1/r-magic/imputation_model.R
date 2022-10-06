@@ -16,7 +16,7 @@ imputation_model <- function(input_data) {
   norm_data <- library.size.normalize(magic_data)
   norm_data <- sqrt(norm_data)
   # run MAGIC with default settings
-  pred_data <- magic(norm_data, seed = 1234, verbose = FALSE, solver = "approximate")
+  pred_data <- magic(norm_data, seed = 1234, verbose = FALSE)
   # convert back to origin count format
   pred_data <- pred_data$result %>%
     t() %>%
