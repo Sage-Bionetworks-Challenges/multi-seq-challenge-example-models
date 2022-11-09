@@ -24,13 +24,12 @@ message("I am using ", ncores, " cores ...")
 # Load your model
 source("/imputation_model.R")
 
-# Read the basename of all downsampled data
-basenames <- read.table(file.path(input_dir, "scrna_input_basenames.txt"), header = FALSE)[, 1]
-
-# Add ".csv" extension to create input filenames
-input_filenames <- paste0(basenames, ".csv")
+# Get input files
+input_filenames <- list.files(".", pattern = "*.csv")
+# Retrieve the filenames without ext of all downsampled data
+filenames <- tools::file_path_sans_ext(input_filenames)
 # Add "_imputed" to create prediction/output filenames
-output_filenames <- paste0(basenames, "_imputed.csv")
+output_filenames <- paste0(filenames, "_imputed.csv")
 
 # Iterate to impute all input files - if your model requires lots of memory:
 # consider to split input files into smaller chunks or use 'for' loop instead

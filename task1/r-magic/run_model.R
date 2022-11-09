@@ -19,19 +19,19 @@ message("I am using ", ncores, " cores ...")
 # Load your model
 source("/imputation_model.R")
 
-# Read the basename of all downsampled data
-basenames <- read.table(file.path(input_dir, "scrna_input_basenames.txt"), header = FALSE)[, 1]
 
-# Add ".csv" extension to create input filenames
-input_filenames <- paste0(basenames, ".csv")
+# Get input files
+input_filenames <- list.files(".", pattern = "*.csv")
+# Retrieve the filenames without ext of all downsampled data
+filenames <- tools::file_path_sans_ext(input_filenames)
 # Add "_imputed" to create prediction/output filenames
-output_filenames <- paste0(basenames, "_imputed.csv")
+output_filenames <- paste0(filenames, "_imputed.csv")
 
-# split into smaller chunks to reduce memory usage
+# split into smaller chunks (index) to reduce memory usage
 set.seed(1234)
 chunks <- split(
-  sample(seq_along(basenames)),
-  cut(seq_along(basenames), 3, labels = FALSE)
+  sample(seq_along(input_filenames)),
+  cut(seq_along(input_filenames), 3, labels = FALSE)
 )
 
 for (c in chunks) {

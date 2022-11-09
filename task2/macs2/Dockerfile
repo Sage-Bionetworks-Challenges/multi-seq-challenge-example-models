@@ -1,6 +1,6 @@
 FROM python:3.9.1-slim-buster
 
-RUN apt-get update && apt-get install -y python3-dev gcc parallel
+RUN apt-get update && apt-get install -y python3-dev gcc parallel pigz
 RUN echo 'will cite' | parallel --citation || true
 RUN python -m pip install --upgrade pip
 RUN pip install macs2 

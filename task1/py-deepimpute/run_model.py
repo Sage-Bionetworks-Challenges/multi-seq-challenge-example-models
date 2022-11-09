@@ -4,6 +4,7 @@ import argparse
 from imputation_model import imputation_model
 from multiprocessing import Pool
 import os
+import glob
 import random
 
 
@@ -15,19 +16,21 @@ def get_args():
     return parser.parse_args()
 
 
-def read_basenames(txt_path):
-    """Read basenames of all downsampled files."""
-    with open(txt_path, "r") as txt_file:
-        basenames = txt_file.read().splitlines()
-        return basenames
-
-
 def list_split(large_list, chunk_size, shuffle=False):
     """Split large list into smaller chunks."""
     if shuffle:
         random.shuffle(large_list)
     for i in range(0, len(large_list), chunk_size):
         yield large_list[i:i + chunk_size]
+
+
+def get_filenames(input_dir, pattern="*.csv"):
+    """Retrieve filenames without extensions of all downsampled files."""
+    input_files = glob.glob(os.path.join(input_dir, pattern))
+    # get filenames without extensions
+    filenames = [os.path.splitext(f)[0] for f in input_files]
+
+    return filenames
 
 
 def main():
@@ -39,17 +42,17 @@ def main():
     nworkers = 10  # used to impute files in parallel
     ncores = 4  # used to run model on single file
 
-    basenames_path = os.path.join(input_dir, "scrna_input_basenames.txt")
-    basenames = read_basenames(basenames_path)
-
+    # get filenames without extensions
+    filenames = get_filenames(input_dir, "*.csv")
     # if needed, split into smaller chunks to reduce memory usage
-    # split_basenames = list_split(basenames, 40, shuffle=True)
-    # and then iterate each chunk of files' basenames, but we don't need in this model
+    # split_filenames = list_split(filenames, 40, shuffle=True)
+    # and then iterate each chunk of filenames, but we don't need in this model
 
-    input_paths = [f"{input_dir}/{b}.csv" for b in basenames]
-    output_paths = [f"{output_dir}/{b}_imputed.csv" for b in basenames]
+    # set input and output file paths
+    input_paths = [f"{input_dir}/{b}.csv" for b in filenames]
+    output_paths = [f"{output_dir}/{b}_imputed.csv" for b in filenames]
 
-    model_inputs = zip(input_paths, output_paths, len(basenames)*[int(ncores)])
+    model_inputs = zip(input_paths, output_paths, len(filenames)*[int(ncores)])
 
     # run model in parallel
     with Pool(processes=int(nworkers)) as pool:
