@@ -21,7 +21,7 @@ source("/imputation_model.R")
 
 
 # Get input files
-input_filenames <- list.files(".", pattern = "*.csv")
+input_filenames <- list.files(input_dir, pattern = "*.csv")
 # Retrieve the filenames without ext of all downsampled data
 filenames <- tools::file_path_sans_ext(input_filenames)
 # Add "_imputed" to create prediction/output filenames
