@@ -9,4 +9,4 @@ RUN apt-get update && apt-get install -y pigz
 COPY imputation_model.R /imputation_model.R
 COPY run_model.R /run_model.R
 # execute the model with '/data' as input dir and 'output' as output dir
-CMD ["Rscript", "/run_model.R", "/input", "/output"]
+ENTRYPOINT ["Rscript", "/run_model.R", "/input", "/output"]

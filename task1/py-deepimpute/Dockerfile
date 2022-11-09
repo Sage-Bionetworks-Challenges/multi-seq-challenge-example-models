@@ -13,4 +13,4 @@ COPY imputation_model.py /imputation_model.py
 COPY run_model.py /run_model.py
 
 # execute the model with '/input' as input dir and 'output' as output dir
-CMD ["python", "/run_model.py", "-i", "/input", "-o", "/output"]
+ENTRYPOINT ["python", "/run_model.py", "-i", "/input", "-o", "/output"]

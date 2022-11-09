@@ -7,4 +7,4 @@ RUN pip install macs2
 
 COPY run_model.sh /run_model.sh
 
-CMD ["bash", "/run_model.sh", "/input", "/output"]
+ENTRYPOINT ["bash", "/run_model.sh", "/input", "/output"]
