@@ -32,12 +32,11 @@
        docker.synapse.org/syn123/example-model-task1:v1
    ```
 
-4. Check if predictions files are saved to `output/`.
+4. The predictions file should be compressed and saved to `output/`.
 
    ```
-   $ ls output/*_imputed.csv | wc -l
-   108
-   # if it's less than 108, it means some data are not successfully imputed
+   $ ls output/
+   predictions.tar.gz
    ```
 
 ## Submit this model to the DREAM Challenge

@@ -25,12 +25,11 @@
        docker.synapse.org/syn123/example-model-task2:v1
    ```
 
-4. The predictions files are saved to `output/`.
+4. The predictions file should be compressed and saved to `output/`.
 
    ```
-   $ ls output/*_peak.narrowPeak | wc -l
-   960
-   # if it's less than 960, it means some data are not successfully imputed
+   $ ls output/
+   predictions.tar.gz
    ```
 
 ## Submit this model to the DREAM Challenge
