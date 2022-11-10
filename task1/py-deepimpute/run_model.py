@@ -26,7 +26,8 @@ def list_split(large_list, chunk_size, shuffle=False):
 
 def get_filenames(input_dir, pattern="*.csv"):
     """Retrieve filenames without extensions of all downsampled files."""
-    input_files = glob.glob(os.path.join(input_dir, pattern))
+    input_files = [os.path.basename(x) for x in glob.glob(
+        os.path.join(input_dir, pattern))]
     # get filenames without extensions
     filenames = [os.path.splitext(f)[0] for f in input_files]
 
