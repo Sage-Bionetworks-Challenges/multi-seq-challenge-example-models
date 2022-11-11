@@ -14,11 +14,9 @@ output_dir <- args[2]
 # Set cores if needed
 # Do not use more than 20 cores - it might slow down the performance
 ncores <- 20
-message("I am using ", ncores, " cores ...")
 
 # Load your model
 source("/imputation_model.R")
-
 
 # Get input files
 input_filenames <- list.files(input_dir, pattern = "*.csv")
@@ -36,7 +34,6 @@ chunks <- split(
 
 for (c in chunks) {
   parallel::mclapply(c, function(i) {
-    message("Imputing ", input_filenames[i], " ...")
     # read input data
     input_path <- file.path(input_dir, input_filenames[i])
     input_data <- data.table::fread(input_path, data.table = FALSE)
