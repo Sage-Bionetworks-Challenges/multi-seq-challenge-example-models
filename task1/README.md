@@ -15,7 +15,7 @@
 
 ## Test the model locally
 
-1. Download and decompress [scrna_toy_data.tar.gz](https://www.synapse.org/#!Synapse:syn36753959)
+1. Find your training data. You could use [seurat_pbmc3k_counts.csv](https://www.synapse.org/#!Synapse:syn36753959), which is the count matrix from [Seurat PBMC 3k dataset](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html).
 
 2. Create an `output` folder
 

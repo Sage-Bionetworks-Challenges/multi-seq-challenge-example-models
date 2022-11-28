@@ -9,7 +9,7 @@
 
 ## Test the model locally
 
-1. Find training data ... TBD
+1. Find your training data
 2. Create an `output` folder
 
    ```
