@@ -3,8 +3,6 @@ FROM r-base:4.0.3
 
 # install required libraries
 RUN R -e "install.packages(c('data.table', 'tibble', 'parallelly'), repos = 'http://cran.us.r-project.org')"
-# install pigz for faster tar
-RUN apt-get update && apt-get install -y pigz
 # copy model script to container
 COPY imputation_model.R /imputation_model.R
 COPY run_model.R /run_model.R

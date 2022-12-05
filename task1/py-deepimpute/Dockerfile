@@ -1,9 +1,6 @@
 # choose existing image or build your own
 FROM python:3.9.1-slim-buster
 
-# install pigz
-RUN apt-get update && apt-get install -y --no-install-recommends pigz
-
 # install deepimpute package
 RUN pip install --upgrade pip
 RUN pip install deepimpute pandas
