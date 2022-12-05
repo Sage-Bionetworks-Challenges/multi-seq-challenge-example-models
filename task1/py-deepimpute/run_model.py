@@ -59,11 +59,6 @@ def main():
     with Pool(processes=int(nworkers)) as pool:
         pool.map(imputation_model, model_inputs)
 
-    # compress all predictions into a compressed tarball
-    # use pigz for parallel compression
-    os.system(
-        f"tar -I pigz -cvf {output_dir}/predictions.tar.gz {output_dir}/*_imputed.csv")
-
 
 if __name__ == "__main__":
     main()

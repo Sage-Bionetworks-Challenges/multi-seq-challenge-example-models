@@ -25,11 +25,10 @@
        docker.synapse.org/syn123/example-model-task2:v1
    ```
 
-4. The predictions file should be compressed and saved to `output/`.
+4. The called peak files (.bed) should be saved to `output/`.
 
    ```
-   $ ls output/
-   predictions.tar.gz
+   $ ls output/*.bed
    ```
 
 ## Submit this model to the DREAM Challenge

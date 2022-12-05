@@ -32,11 +32,10 @@
        docker.synapse.org/syn123/example-model-task1:v1
    ```
 
-4. The predictions file should be compressed and saved to `output/`.
+4. The imputed files (\*\_imputed.csv) should be saved to `output/`.
 
    ```
-   $ ls output/
-   predictions.tar.gz
+   $ ls output/*_imputed.csv
    ```
 
 ## Submit this model to the DREAM Challenge

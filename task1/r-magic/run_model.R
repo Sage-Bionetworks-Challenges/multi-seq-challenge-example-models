@@ -49,7 +49,3 @@ for (c in chunks) {
     )
   }, mc.cores = ncores)
 }
-
-# compress all predictions into a compressed tarball
-# use pigz for parallel compression
-system(sprintf("tar -I pigz -cvf %s/predictions.tar.gz %s/*_imputed.csv", output_dir, output_dir))
