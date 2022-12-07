@@ -15,7 +15,7 @@
 
 ## Test the model locally
 
-1. Find your training data. You could use [seurat_pbmc3k_counts.csv](https://www.synapse.org/#!Synapse:syn36753959), which is the count matrix from [Seurat PBMC 3k dataset](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html).
+1. Find your training data. You could use [seurat_pbmc3k_counts.csv](https://www.synapse.org/#!Synapse:syn48025824), which is the count matrix from [Seurat PBMC 3k dataset](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html).
 
 2. Create an `output` folder
 
@@ -27,7 +27,7 @@
 
    ```bash
    docker run \
-       -v $PWD/scrna_toy_data/:/input:ro \
+       -v $PWD/<training-data-folder>/:/input:ro \
        -v $PWD/output:/output:rw \
        docker.synapse.org/syn123/example-model-task1:v1
    ```
@@ -40,7 +40,7 @@
 
 ## Submit this model to the DREAM Challenge
 
-If your model meets the requirements and it can be pushed up to your project on Synapse. Please see the [instructions] on how to submit the model to synapse. Then submit it to the Task 1 of [the Dream Challenge].
+If your model meets the requirements and it can be pushed up to your project on Synapse. Please see the [instructions] on how to submit the model to synapse. Then submit it to the Task 1 of [the DREAM Challenge].
 
-[the dream challenge]: https://www.synapse.org/#!Synapse:syn26720920/wiki/615338
-[instructions]: https://www.synapse.org/#!Synapse:syn26720920/wiki/615352
+[the DREAM Challenge]: https://www.synapse.org/#!Synapse:syn26720920/wiki/615338
+[instructions]: https://www.synapse.org/#!Synapse:syn26720920/wiki/620141

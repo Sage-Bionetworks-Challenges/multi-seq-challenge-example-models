@@ -13,7 +13,7 @@ Please go to each task folder for detailed instructions on how to build your mod
 
 ## Submit this model to the DREAM Challenge
 
-This model meets the requirements for models to be submitted to Task 1 and Task 2 of [the Dream Challenge]. Please see the [instructions] on how to submit the model to synapse.
+This model meets the requirements for models to be submitted to Task 1 and Task 2 of [the DREAM Challenge]. Please see the [instructions] on how to submit the model to synapse.
 
-[the dream challenge]: https://www.synapse.org/#!Synapse:syn26720920/wiki/615338
-[instructions]: https://www.synapse.org/#!Synapse:syn26720920/wiki/615352
+[the DREAM Challenge]: https://www.synapse.org/#!Synapse:syn26720920/wiki/615338
+[instructions]: https://www.synapse.org/#!Synapse:syn26720920/wiki/620141
