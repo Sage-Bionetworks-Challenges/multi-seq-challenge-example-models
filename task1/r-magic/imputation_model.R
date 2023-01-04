@@ -22,6 +22,6 @@ imputation_model <- function(input_data) {
     t() %>%
     as.data.frame() %>%
     setNames(cells)
-
+  
   return(pred_data)
 }
