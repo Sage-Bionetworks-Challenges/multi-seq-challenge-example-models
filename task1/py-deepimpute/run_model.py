@@ -39,14 +39,14 @@ def main():
     args = get_args()
     input_dir = args.input_dir
     output_dir = args.output_dir
-    # be careful not to exceed memory limit (160g)
-    nworkers = 10  # used to impute files in parallel
-    ncores = 4  # used to run model on single file
+    # be careful not to exceed memory limit (240g)
+    nworkers = 30  # used to impute files in parallel
+    ncores = 6  # used to run model on single file
 
     # get filenames without extensions
     filenames = get_filenames(input_dir, "*.csv")
     # if needed, split into smaller batches to reduce memory usage
-    batches = set_batches(filenames, 10, shuffle=True)
+    batches = set_batches(filenames, 20, shuffle=True)
 
     # set input and output file paths
     for batch in batches:

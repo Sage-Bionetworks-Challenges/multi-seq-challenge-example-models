@@ -12,8 +12,8 @@ input_dir <- args[1]
 output_dir <- args[2]
 
 # Set cores if needed
-# Do not use more than 20 cores - it might slow down the performance
-ncores <- 20
+# Do not use more than 30 cores - it might slow down the performance
+ncores <- 30
 
 # Load your model
 source("/imputation_model.R")

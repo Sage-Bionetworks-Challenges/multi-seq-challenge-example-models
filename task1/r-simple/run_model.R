@@ -15,9 +15,9 @@ output_dir <- args[2]
 # Use parallel::detectCores() will not respect cgroups, cpus in the docker
 # You could use parallelly::availableCores() instead,
 # but suggest to manually set the number of cores
-# Do not use more than 20 cores - it might slow down the performance
+# Do not use more than 30 cores - it might slow down the performance
 # ncores <- parallelly::availableCores()
-ncores <- 20
+ncores <- 30
 
 # Load your model
 source("/imputation_model.R")
