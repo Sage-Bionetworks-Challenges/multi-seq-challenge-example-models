@@ -1,4 +1,6 @@
 import pandas as pd
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # hide all messages from tf
 
 
 def imputation_model(model_inputs, ncores=4):
