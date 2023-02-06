@@ -16,12 +16,12 @@ def get_args():
     return parser.parse_args()
 
 
-def list_split(large_list, chunk_size, shuffle=False):
-    """Split large list into smaller chunks."""
+def set_batches(orig_list, batch_size, shuffle=False):
+    """Split large list into smaller batches."""
     if shuffle:
-        random.shuffle(large_list)
-    for i in range(0, len(large_list), chunk_size):
-        yield large_list[i:i + chunk_size]
+        random.shuffle(orig_list)
+    for i in range(0, len(orig_list), batch_size):
+        yield orig_list[i:i + batch_size]
 
 
 def get_filenames(input_dir, pattern="*.csv"):
@@ -45,19 +45,20 @@ def main():
 
     # get filenames without extensions
     filenames = get_filenames(input_dir, "*.csv")
-    # if needed, split into smaller chunks to reduce memory usage
-    # split_filenames = list_split(filenames, 40, shuffle=True)
-    # and then iterate each chunk of filenames, but we don't need in this model
+    # if needed, split into smaller batches to reduce memory usage
+    batches = set_batches(filenames, 10, shuffle=True)
 
     # set input and output file paths
-    input_paths = [f"{input_dir}/{b}.csv" for b in filenames]
-    output_paths = [f"{output_dir}/{b}_imputed.csv" for b in filenames]
+    for batch in batches:
+        input_paths = [f"{input_dir}/{b}.csv" for b in batch]
+        output_paths = [f"{output_dir}/{b}_imputed.csv" for b in batch]
 
-    model_inputs = zip(input_paths, output_paths, len(filenames)*[int(ncores)])
+        model_inputs = zip(input_paths, output_paths,
+                           len(filenames)*[int(ncores)])
 
-    # run model in parallel
-    with Pool(processes=int(nworkers)) as pool:
-        pool.map(imputation_model, model_inputs)
+        # run model in parallel
+        with Pool(processes=int(nworkers)) as pool:
+            pool.map(imputation_model, model_inputs)
 
 
 if __name__ == "__main__":
