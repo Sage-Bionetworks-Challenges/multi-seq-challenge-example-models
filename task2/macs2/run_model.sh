@@ -1,7 +1,7 @@
 #!/bin/bash
 export INPUT_DIR=$1
 export OUPUT_DIR=$2
-export NCORES=20 # don't use more than 10 cores
+export NCORES=20
 
 mkdir -p $OUPUT_DIR
 
