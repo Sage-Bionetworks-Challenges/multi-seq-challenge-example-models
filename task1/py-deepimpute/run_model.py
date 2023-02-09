@@ -46,7 +46,7 @@ def main():
     # get filenames without extensions
     filenames = get_filenames(input_dir, "*.csv")
     # if needed, split into smaller batches to reduce memory usage
-    batches = set_batches(filenames, 20, shuffle=True)
+    batches = set_batches(filenames, 30, shuffle=True)
 
     # set input and output file paths
     for batch in batches:
